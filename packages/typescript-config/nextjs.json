@@ -9,7 +9,7 @@
     "jsx": "preserve",
     "noEmit": true,
     "paths": {
-      "@*": [
+      "@/*": [
         "../../apps/archive-webapp/src/*",
         "../../apps/archive-manager/src/*"
       ]
