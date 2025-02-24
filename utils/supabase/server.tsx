@@ -2,8 +2,12 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
 export async function createClient() {
-  const cookieStore = await cookies()
+  let cookieStore;
 
+  try {
+    cookieStore = await cookies();
+  } catch (_) {}
+  
   // Create a server's supabase client with newly configured cookie,
   // which could be used to maintain user's session
   return createServerClient(
@@ -12,12 +16,12 @@ export async function createClient() {
     {
       cookies: {
         getAll() {
-          return cookieStore.getAll()
+          return cookieStore?.getAll()
         },
         setAll(cookiesToSet) {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
+              cookieStore?.set(name, value, options)
             )
           } catch {
             // The `setAll` method was called from a Server Component.
