@@ -12,7 +12,8 @@
       "@/*": [
         "../../apps/archive-webapp/src/*",
         "../../apps/archive-manager/src/*"
-      ]
+      ],
+      "~/*": ["../../*"]
     }
   }
 }
