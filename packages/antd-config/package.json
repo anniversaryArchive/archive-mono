@@ -1,0 +1,9 @@
+{
+  "name": "@repo/antd-config",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "exports": {
+    "./globalToken": "./globalToken.ts"
+  }
+}
