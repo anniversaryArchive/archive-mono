@@ -1,3 +1,4 @@
+import "@repo/ui/font";
 import "@/styles/globals.css";
 
 import { ConfigProvider } from "antd";
