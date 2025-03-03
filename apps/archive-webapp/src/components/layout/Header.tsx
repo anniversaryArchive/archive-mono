@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <Wrapper>
       <Logo onClick={() => router.push("/")}>ARCHIVE</Logo>
-      <ButtonWrapper>
+      <Container>
         <Button
           type="text"
           size="large"
@@ -22,7 +22,7 @@ export default function Header() {
           shape="circle"
           icon={<UserOutlined style={{ fontSize: "22px" }} />}
         />
-      </ButtonWrapper>
+      </Container>
     </Wrapper>
   );
 }
@@ -44,7 +44,7 @@ const Logo = styled.div`
   user-select: none;
 `;
 
-const ButtonWrapper = styled.div`
+const Container = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;

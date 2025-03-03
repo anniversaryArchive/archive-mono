@@ -7,34 +7,35 @@ import {
 } from "@ant-design/icons";
 import { Divider } from "antd";
 import styled from "styled-components";
+import { Text } from "@repo/ui/components";
 
 export default function Footer() {
   return (
     <Wrapper>
-      <ButtonWrapper>
+      <Tab>
         <EnvironmentOutlined />
-        <span>지도</span>
-      </ButtonWrapper>
+        <Text>지도</Text>
+      </Tab>
       <StyledDivider type="vertical" />
-      <ButtonWrapper>
+      <Tab>
         <HeartOutlined />
-        <span>마음함</span>
-      </ButtonWrapper>
+        <Text>마음함</Text>
+      </Tab>
       <StyledDivider type="vertical" />
-      <ButtonWrapper>
+      <Tab>
         <HomeOutlined />
-        <span>홈</span>
-      </ButtonWrapper>
+        <Text>홈</Text>
+      </Tab>
       <StyledDivider type="vertical" />
-      <ButtonWrapper>
+      <Tab>
         <SearchOutlined />
-        <span>검색</span>
-      </ButtonWrapper>
+        <Text>검색</Text>
+      </Tab>
       <StyledDivider type="vertical" />
-      <ButtonWrapper>
+      <Tab>
         <RobotOutlined />
-        <span>소통창구</span>
-      </ButtonWrapper>
+        <Text>소통창구</Text>
+      </Tab>
     </Wrapper>
   );
 }
@@ -47,18 +48,18 @@ const Wrapper = styled.section`
   justify-content: space-between;
 `;
 
-const ButtonWrapper = styled.div`
+const Tab = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   cursor: pointer;
 
-  & > span:first-child {
+  & > Text:first-child {
     font-size: 1.3rem;
   }
 
-  & > span:last-child {
+  & > Text:last-child {
     user-select: none;
   }
 `;

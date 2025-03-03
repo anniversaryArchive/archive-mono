@@ -15,15 +15,18 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 
 const Wrapper = styled.main`
-  width: 540px;
   height: 100vh;
   background: white;
-  position: fixed;
-  left: 50%;
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media only screen and (min-width: 1200px) {
+    width: 540px;
+    position: fixed;
+    left: 50%;
+  }
 `;
 
 const Body = styled.section`

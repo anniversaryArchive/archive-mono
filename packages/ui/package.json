@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./components": "./src/components/index.ts",
     "./font": "./config/font.css"
   },
   "scripts": {
