@@ -9,8 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
-    "react-device-detect": "^2.2.3"
+    "@repo/ui": "workspace:*"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
