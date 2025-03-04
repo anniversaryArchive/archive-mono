@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const LoginBg = styled.div`
-  height: 100vh; /* 화면 높이에 맞춤 */
+  min-height: 100vh; /* 화면 높이에 맞춤 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow-x: auto;
   background-size: cover;
@@ -9,9 +12,7 @@ export const LoginBg = styled.div`
 `;
 
 export const LoginDiv = styled.div`
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 464px;
   text-align: center;
   p.logo {
     text-align: center;

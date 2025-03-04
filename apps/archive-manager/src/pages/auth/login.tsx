@@ -14,7 +14,7 @@ export default function Document() {
     }
 
     /*try {
-      const response = await fetch('/api/login', { // API 엔드포인트를 설정하세요
+      const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
