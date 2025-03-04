@@ -65,17 +65,12 @@ importers:
         specifier: ^2.2.3
         version: 2.2.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     devDependencies:
-      '@repo/antd-config':
-        specifier: workspace:*
-        version: link:../../packages/antd-config
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-
-  packages/antd-config: {}
 
   packages/eslint-config:
     devDependencies:
