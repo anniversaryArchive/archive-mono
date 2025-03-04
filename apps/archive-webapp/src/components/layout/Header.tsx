@@ -3,6 +3,9 @@ import { Button } from "antd";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
+// TODO: #1 PR 병합 후 ~/context/global로 변경
+import { PRIMARY_COLOR } from "../../../../../contexts/global";
+
 export default function Header() {
   const router = useRouter();
 
@@ -38,7 +41,7 @@ const Wrapper = styled.header`
 const Logo = styled.div`
   font-size: 28px;
   font-weight: bold;
-  color: #006242;
+  color: ${PRIMARY_COLOR};
   letter-spacing: 1.5px;
   cursor: pointer;
   user-select: none;

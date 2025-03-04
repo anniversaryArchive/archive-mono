@@ -9,6 +9,9 @@ import { Menu as AntdMenu } from "antd";
 import Link from "next/link";
 import styled from "styled-components";
 
+// TODO: #1 PR 병합 후 ~/context/global로 변경
+import { PRIMARY_COLOR } from "../../../../../contexts/global";
+
 export default function Footer() {
   const menuList = [
     {
@@ -72,7 +75,7 @@ const Menu = styled(AntdMenu)`
     }
 
     &:hover {
-      color: #006242bb !important;
+      color: ${PRIMARY_COLOR}bb !important;
     }
   }
 `;
