@@ -9,11 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*"
+    "@repo/ui": "workspace:*",
+    "react-device-detect": "^2.2.3"
   },
   "devDependencies": {
+    "@repo/antd-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/antd-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*"
   }
 }

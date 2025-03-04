@@ -5,65 +5,88 @@ import {
   RobotOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Divider } from "antd";
+import { Menu as AntdMenu } from "antd";
+import Link from "next/link";
 import styled from "styled-components";
-import { Text } from "@repo/ui/components";
 
 export default function Footer() {
-  return (
-    <Wrapper>
-      <Tab>
-        <EnvironmentOutlined />
-        <Text>지도</Text>
-      </Tab>
-      <StyledDivider type="vertical" />
-      <Tab>
-        <HeartOutlined />
-        <Text>마음함</Text>
-      </Tab>
-      <StyledDivider type="vertical" />
-      <Tab>
-        <HomeOutlined />
-        <Text>홈</Text>
-      </Tab>
-      <StyledDivider type="vertical" />
-      <Tab>
-        <SearchOutlined />
-        <Text>검색</Text>
-      </Tab>
-      <StyledDivider type="vertical" />
-      <Tab>
-        <RobotOutlined />
-        <Text>소통창구</Text>
-      </Tab>
-    </Wrapper>
-  );
+  const menuList = [
+    {
+      label: (
+        <MenuLabel href={"/map"}>
+          <EnvironmentOutlined />
+          <span>지도</span>
+        </MenuLabel>
+      ),
+      key: "map",
+    },
+    {
+      label: (
+        <MenuLabel href={"/wish-list"}>
+          <HeartOutlined />
+          <span>마음함</span>
+        </MenuLabel>
+      ),
+      key: "wish-list",
+    },
+    {
+      label: (
+        <MenuLabel href={"/"}>
+          <HomeOutlined />
+          <span>홈</span>
+        </MenuLabel>
+      ),
+      key: "home",
+    },
+    {
+      label: (
+        <MenuLabel href={"/search"}>
+          <SearchOutlined />
+          <span>검색</span>
+        </MenuLabel>
+      ),
+      key: "search",
+    },
+    {
+      label: (
+        <MenuLabel href={"/support"}>
+          <RobotOutlined />
+          <span>소통창구</span>
+        </MenuLabel>
+      ),
+      key: "support",
+    },
+  ];
+
+  return <Menu mode="horizontal" items={menuList} />;
 }
 
-const Wrapper = styled.section`
-  height: 80px;
-  margin: 0 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+const Menu = styled(AntdMenu)`
+  height: 65px;
+  & > li {
+    padding-top: 10px;
+    width: calc(100% / 5);
+
+    &:after {
+      border: 0 !important;
+    }
+
+    &:hover {
+      color: #006242bb !important;
+    }
+  }
 `;
 
-const Tab = styled.div`
+const MenuLabel = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   cursor: pointer;
 
-  & > Text:first-child {
-    font-size: 1.3rem;
-  }
-
-  & > Text:last-child {
+  & > span:last-child {
     user-select: none;
+    margin: 0 !important;
+    line-height: 1;
   }
-`;
-
-const StyledDivider = styled(Divider)`
-  height: 2.3rem;
 `;
