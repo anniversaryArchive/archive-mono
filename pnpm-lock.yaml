@@ -92,9 +92,6 @@ importers:
       globals:
         specifier: ^15.14.0
         version: 15.14.0
-      typescript:
-        specifier: ^5.7.3
-        version: 5.7.3
       typescript-eslint:
         specifier: ^8.22.0
         version: 8.22.0(eslint@9.19.0)(typescript@5.7.3)
@@ -102,13 +99,6 @@ importers:
   packages/typescript-config: {}
 
   packages/ui:
-    dependencies:
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.0.0(react@19.0.0)
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -119,18 +109,6 @@ importers:
       '@turbo/gen':
         specifier: ^2.4.0
         version: 2.4.0(@types/node@22.13.0)(typescript@5.7.3)
-      '@types/node':
-        specifier: ^22.13.0
-        version: 22.13.0
-      '@types/react':
-        specifier: 19.0.8
-        version: 19.0.8
-      '@types/react-dom':
-        specifier: 19.0.3
-        version: 19.0.3(@types/react@19.0.8)
-      typescript:
-        specifier: 5.7.3
-        version: 5.7.3
 
 packages:
 
