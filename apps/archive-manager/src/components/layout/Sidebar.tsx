@@ -33,29 +33,20 @@ const LayoutMenuContainer = styled.div`
 const Sidebar: React.FC = () => {
   const router = useRouter();
   const [sidebarActive, setSidebarActive] = useState(false);
-  const [anchored, setAnchored] = useState(false);
   let timeout: NodeJS.Timeout | null = null;
 
   const handleMouseEnter = () => {
-    if (!anchored) {
-      if (timeout) {
-        clearTimeout(timeout);
-        timeout = null;
-      }
-      setSidebarActive(true);
+    if (timeout) {
+      clearTimeout(timeout);
+      timeout = null;
     }
+    setSidebarActive(true);
   };
 
   const handleMouseLeave = () => {
-    if (!anchored) {
-      if (!timeout) {
-        timeout = setTimeout(() => setSidebarActive(false), 300);
-      }
+    if (!timeout) {
+      timeout = setTimeout(() => setSidebarActive(false), 300);
     }
-  };
-
-  const toggleAnchor = () => {
-    setAnchored(!anchored);
   };
 
   useEffect(() => {
@@ -76,7 +67,7 @@ const Sidebar: React.FC = () => {
           ARCHIVE
           {/* 로고 자리 */}
         </a>
-       </SidebarHeader>
+      </SidebarHeader>
       <LayoutMenuContainer>
         <AppMenu />
       </LayoutMenuContainer>
