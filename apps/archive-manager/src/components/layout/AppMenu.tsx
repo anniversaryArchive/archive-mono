@@ -72,18 +72,18 @@ const AppMenu: React.FC = () => {
   return (
     <div>
       {model.map((item) => ( // 모델의 각 메뉴 항목을 순회
-        <LayoutMenu key={item.label}> // 각 항목에 대한 LayoutMenu 컴포넌트
-          <LayoutMenuItem onClick={() => toggleItem(item.label)}> // 메뉴 항목 클릭 시 토글
-            {item.label} // 메뉴 항목의 레이블
+        <LayoutMenu key={item.label}>
+          <LayoutMenuItem onClick={() => toggleItem(item.label)}>
+            {item.label}
           </LayoutMenuItem>
           {openItem === item.label && item.items && item.items.map((subItem) => ( // 현재 열려 있는 메뉴 항목의 경우
-            <ItemList key={subItem.label}> // 하위 항목에 대한 ItemList 컴포넌트
-              <Link href={subItem.path || '#'} passHref> // 하위 항목의 경로에 대한 Link
+            <ItemList key={subItem.label}>
+              <Link href={subItem.path || '#'} passHref>
                 <span style={{
                   fontWeight: router.pathname === subItem.path ? 600 : 'normal', // 현재 경로와 일치하면 굵게
                   color: router.pathname === subItem.path ? '#137157' : 'inherit', // 현재 경로와 일치하면 색상 변경
                 }}>
-                  {subItem.label} // 하위 항목의 레이블
+                  {subItem.label}
                 </span>
               </Link>
             </ItemList>
