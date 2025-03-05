@@ -6,6 +6,7 @@ import AppMenu from './AppMenu';
 
 const SidebarContainer = styled.div`
   position: fixed;
+  background: #ffffff;
   height: 100%;
   top: 0;
   left: 0;

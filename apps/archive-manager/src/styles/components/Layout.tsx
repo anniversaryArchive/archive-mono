@@ -7,7 +7,7 @@ export const LayoutContentWrapper = styled.div`
 export const LayoutContainer = styled.div`
   width: auto;
   margin-left: 18rem;
-  padding: 2rem;
+  padding: 3rem;
 `;
 
 export const LayoutContent = styled.div`

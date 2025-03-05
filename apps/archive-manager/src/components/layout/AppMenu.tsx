@@ -1,66 +1,23 @@
-import React, { useEffect, useState } from 'react'; // React와 상태 관리 및 효과를 위한 훅을 임포트
-import Link from 'next/link'; // Next.js의 Link 컴포넌트를 임포트
-import { useRouter } from 'next/router'; // 현재 라우터 정보를 가져오기 위한 훅을 임포트
-import { LayoutMenu, LayoutMenuItem, ItemList } from '@/styles/components/Layout'; // 스타일 컴포넌트 임포트
-
-// 메뉴 항목의 타입을 정의
-interface MenuItem {
-  label: string; // 메뉴 항목의 레이블
-  items?: MenuItem[]; // 하위 메뉴 항목 (선택사항)
-  path?: string; // 해당 메뉴 항목의 경로 (선택사항)
-}
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { LayoutMenu, LayoutMenuItem, ItemList } from '@/styles/components/Layout';
+import { menuModel, MenuItem } from '@/data/MenuData';
 
 const AppMenu: React.FC = () => {
   const router = useRouter(); // 현재 라우터 정보를 가져옴
-  const [model, setModel] = useState<MenuItem[]>([ // 메뉴 항목 모델
-    {
-      label: '관리자',
-      items: [
-        {
-          label: '대시보드',
-          path: '/admin/dashboard', // 대시보드 경로
-        },
-        {
-          label: '관리자 목록',
-          // path: '/admin/users', // 예시로 주석 처리된 관리자 목록 경로
-        },
-      ],
-    },
-    {
-      label: '회원',
-      items: [
-        {
-          label: '회원목록', // 하위 항목이 없는 회원 목록
-        },
-      ],
-    },
-    {
-      label: '데이터',
-      items: [
-        {
-          label: '아티스트 목록',
-        },
-        {
-          label: '아카이브 목록',
-        },
-        {
-          label: '태그 목록',
-        },
-        {
-          label: '기타 문의 조회',
-        },
-      ],
-    },
-  ]);
+  const [model, setModel] = useState<MenuItem[]>(menuModel); // 메뉴 항목 모델
 
-  const [openItem, setOpenItem] = useState<string | null>(null); // 현재 열려 있는 메뉴 항목의 레이블을 저장
+  // 현재 열려 있는 메뉴 항목의 레이블을 저장
+  const [openItem, setOpenItem] = useState<string | null>(null);
 
-  const toggleItem = (label: string) => { // 메뉴 항목을 열거나 닫는 함수
-    setOpenItem((prev) => (prev === label ? null : label)); // 클릭한 항목이 열려 있으면 닫고, 닫혀 있으면 연다
+  const toggleItem = (label: string) => {
+    // 클릭한 항목만 열기
+    setOpenItem((prev) => (prev === label ? null : label));
   };
 
   useEffect(() => {
-    const activeMenu = model.find(item => // 현재 경로와 일치하는 하위 메뉴가 있는지 찾음
+    const activeMenu = model.find(item =>
       item.items?.some(subItem => subItem.path === router.pathname) // 현재 경로와 일치하는 하위 메뉴가 있는지 확인
     );
 
@@ -71,7 +28,7 @@ const AppMenu: React.FC = () => {
 
   return (
     <div>
-      {model.map((item) => ( // 모델의 각 메뉴 항목을 순회
+      {model.map((item) => (
         <LayoutMenu key={item.label}>
           <LayoutMenuItem onClick={() => toggleItem(item.label)}>
             {item.label}
@@ -80,8 +37,8 @@ const AppMenu: React.FC = () => {
             <ItemList key={subItem.label}>
               <Link href={subItem.path || '#'} passHref>
                 <span style={{
-                  fontWeight: router.pathname === subItem.path ? 600 : 'normal', // 현재 경로와 일치하면 굵게
-                  color: router.pathname === subItem.path ? '#137157' : 'inherit', // 현재 경로와 일치하면 색상 변경
+                  fontWeight: router.pathname === subItem.path ? 600 : 'normal',
+                  color: router.pathname === subItem.path ? '#137157' : 'inherit',
                 }}>
                   {subItem.label}
                 </span>
