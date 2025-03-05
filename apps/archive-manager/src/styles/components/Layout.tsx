@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const LayoutContainer = styled.div`
+export const LayoutContentWrapper = styled.div`
   width: auto;
 `;
 
-export const LayoutContentWrapper = styled.div`
+export const LayoutContainer = styled.div`
   width: auto;
   margin-left: 18rem;
   padding: 2rem;

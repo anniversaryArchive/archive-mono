@@ -1,14 +1,9 @@
 import styled from "styled-components";
 
 
-export default function Layout() {
+export default function Header() {
   return (
     <>
     </>
   );
 }
-
-
-const Body = styled.section`
-  flex-grow: 1;
-`;

@@ -11,14 +11,14 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <LayoutContainer>
+    <LayoutContentWrapper>
       <Sidebar />
-      <LayoutContentWrapper>
+      <LayoutContainer>
         <Header />
         <LayoutContent>
           <div>{children}</div>
         </LayoutContent>
-      </LayoutContentWrapper>
-    </LayoutContainer>
+      </LayoutContainer>
+    </LayoutContentWrapper>
   );
 }

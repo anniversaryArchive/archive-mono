@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import Link from 'next/link'; // Link 컴포넌트 임포트
 import AppMenu from './AppMenu';
 
 const SidebarContainer = styled.div`
@@ -23,6 +24,7 @@ const SidebarHeader = styled.div`
     font-size: 30px;
     color: #137157;
     font-weight: 700;
+    text-decoration: none;  /* 링크에 기본 스타일 제거 */
   }
 `;
 
@@ -31,7 +33,6 @@ const LayoutMenuContainer = styled.div`
 `;
 
 const Sidebar: React.FC = () => {
-  const router = useRouter();
   const [sidebarActive, setSidebarActive] = useState(false);
   let timeout: NodeJS.Timeout | null = null;
 
@@ -63,10 +64,10 @@ const Sidebar: React.FC = () => {
       onMouseLeave={handleMouseLeave}
     >
       <SidebarHeader>
-        <a onClick={() => router.push('/member-inquiry')} className="app-logo">
+        <Link href="/" passHref>
           ARCHIVE
           {/* 로고 자리 */}
-        </a>
+        </Link>
       </SidebarHeader>
       <LayoutMenuContainer>
         <AppMenu />
