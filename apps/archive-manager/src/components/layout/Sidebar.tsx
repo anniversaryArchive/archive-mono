@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
 import Link from 'next/link'; // Link 컴포넌트 임포트
 import AppMenu from './AppMenu';
 
@@ -34,36 +33,8 @@ const LayoutMenuContainer = styled.div`
 `;
 
 const Sidebar: React.FC = () => {
-  const [sidebarActive, setSidebarActive] = useState(false);
-  let timeout: NodeJS.Timeout | null = null;
-
-  const handleMouseEnter = () => {
-    if (timeout) {
-      clearTimeout(timeout);
-      timeout = null;
-    }
-    setSidebarActive(true);
-  };
-
-  const handleMouseLeave = () => {
-    if (!timeout) {
-      timeout = setTimeout(() => setSidebarActive(false), 300);
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-    };
-  }, [timeout]);
-
   return (
-    <SidebarContainer
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <SidebarContainer>
       <SidebarHeader>
         <Link href="/" passHref>
           ARCHIVE
