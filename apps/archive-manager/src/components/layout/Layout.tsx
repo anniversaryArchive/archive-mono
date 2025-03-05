@@ -16,13 +16,9 @@ export default function Layout({ children }: LayoutProps) {
       <LayoutContentWrapper>
         <Header />
         <LayoutContent>
-          <Body>{children}</Body>
+          <div>{children}</div>
         </LayoutContent>
       </LayoutContentWrapper>
     </LayoutContainer>
   );
 }
-
-const Body = styled.section`
-  //
-`;
