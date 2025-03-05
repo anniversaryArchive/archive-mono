@@ -50,6 +50,14 @@ cd my-turborepo
 pnpm dev
 ```
 
+### Types
+
+supabase의 테이블 데이터를 Typescript 타입으로 정의하고 `types_ds.ts` 라는 파일명으로 다운받아 진다.
+
+```
+pnpm generate-types
+```
+
 ### Remote Caching
 
 > [!TIP]
