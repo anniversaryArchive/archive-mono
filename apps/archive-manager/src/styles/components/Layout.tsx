@@ -21,15 +21,19 @@ export const LayoutMenu = styled.div`
   }
 `;
 
-export const LayoutMenuItem = styled.div`
-  font-size: 1.125rem;
-  font-weight: 700;
+export const LayoutMenuItem = styled.div`;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  color: #444444;
+  opacity: 1;
+  text-align: left;
+  vertical-align: middle;
 `;
 
 export const ItemList = styled.div`
   margin-top: 16px;
-  font-size: 1rem;
+  font-size: 14px;
   padding-left: 20px;
   & + & {
     margin-top: 8px;
