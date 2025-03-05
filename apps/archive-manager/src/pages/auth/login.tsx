@@ -42,8 +42,8 @@ export default function Document() {
   return (
     <LoginBg>
       <LoginDiv>
-        <p className='logo'>ARCHIVE</p>
-        <p className='class'>관리자 화면 로그인</p>
+        <p>ARCHIVE</p>
+        <p>관리자 화면 로그인</p>
         <LoginForm>
           <StyledInput
             type="text"
