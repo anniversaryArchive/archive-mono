@@ -2,11 +2,11 @@ import "@repo/ui/font";
 
 import { ConfigProvider } from "antd";
 import { createGlobalStyle } from "styled-components";
+import Head from "next/head";
 import type { AppProps } from "next/app";
 
-// TODO: #1 PR 병합 후 "~/" 경로로 변경
-import { PRIMARY_COLOR } from "../../../../contexts/global";
-import globalToken from "../../../../utils/antd/globalToken";
+import { PRIMARY_COLOR } from "~/utils/global";
+import globalToken from "~/utils/antd/globalToken";
 import Layout from "@/components/layout";
 
 const GlobalStyle = createGlobalStyle`
@@ -20,11 +20,20 @@ body {
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ConfigProvider {...globalToken}>
-      <GlobalStyle />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ConfigProvider>
+    <>
+      <Head>
+        <title>아카이브</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1"
+        />
+      </Head>
+      <ConfigProvider {...globalToken}>
+        <GlobalStyle />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ConfigProvider>
+    </>
   );
 }
