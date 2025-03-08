@@ -15,7 +15,7 @@ export default function Footer() {
   const menuList = [
     {
       label: (
-        <MenuLabel href={"/map"}>
+        <MenuLabel href={"/cafeMap"}>
           <EnvironmentOutlined />
           <span>지도</span>
         </MenuLabel>

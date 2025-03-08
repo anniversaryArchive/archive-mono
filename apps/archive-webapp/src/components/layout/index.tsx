@@ -31,5 +31,4 @@ const Wrapper = styled.main`
 
 const Body = styled.section`
   flex-grow: 1;
-  margin: 0 24px;
 `;
