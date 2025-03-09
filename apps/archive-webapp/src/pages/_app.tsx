@@ -1,4 +1,5 @@
 import "@repo/ui/font";
+import "@ant-design/v5-patch-for-react-19";
 
 import { ConfigProvider } from "antd";
 import { createGlobalStyle } from "styled-components";

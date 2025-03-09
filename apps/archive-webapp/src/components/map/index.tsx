@@ -1,39 +1,37 @@
-import { useRef } from "react";
 import Script from "next/script";
 import styled from "styled-components";
-
-type TNaverMap = naver.maps.Map;
+import SearchBox from "./SearchBox";
 
 interface IMap {
   mapId?: string;
   lat?: number;
   lng?: number;
-  style?: string;
+  width?: string;
+  height?: string;
 }
 
 const Map = ({
   mapId = "map",
   lat = 37.51747,
   lng = 127.000022,
-  style = `width: 100%; height: 100%`,
+  width = "100%",
+  height = "100%",
 }: IMap) => {
-  const mapRef = useRef<TNaverMap | null>(null);
-
-  const Wrapper = styled.div`
-    ${style}
-  `;
-
   const initializeMap = () => {
+    const position = new naver.maps.LatLng(lat, lng);
     const mapOptions = {
-      center: new naver.maps.LatLng(lat, lng),
+      center: position,
       zoom: 10,
       minZoom: 9,
       scaleControl: false,
       mapDataControl: false,
     };
 
-    const map = new naver.maps.Map(mapId, mapOptions);
-    mapRef.current = map;
+    new naver.maps.Map(mapId, mapOptions);
+  };
+
+  const handleSearch = (keyword: string) => {
+    console.log(keyword, "검색 .. .");
   };
 
   return (
@@ -46,10 +44,31 @@ const Map = ({
         onError={(e) => {
           console.error("Script failed to load", e);
         }}
+        defer
       />
-      <Wrapper id={mapId} />
+      <Wrapper>
+        <SearchBox handleSearch={handleSearch} />
+        <MapContainer id={mapId} $width={width} $height={height} />
+      </Wrapper>
     </>
   );
 };
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+`;
+
+const MapContainer = styled.div.attrs<{ $width: string; $height: string }>(
+  (props) => ({
+    $width: props.$width,
+    $height: props.$height,
+  })
+)`
+  width: ${(props) => props.$width};
+  height: ${(props) => props.$height};
+  position: absolute;
+`;
 
 export default Map;
