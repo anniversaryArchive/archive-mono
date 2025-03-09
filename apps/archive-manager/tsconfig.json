@@ -4,7 +4,13 @@
     "baseUrl": ".", // 현재 디렉토리 기준
     "paths": {
       "@/*": ["src/*"] // src 디렉토리에 맞게 설정
-    }
+    },
+    "allowImportingTsExtensions": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "**/*.ts",
