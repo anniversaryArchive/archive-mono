@@ -5,9 +5,17 @@ import styled from "styled-components";
 
 // TODO: #1 PR 병합 후 ~/context/global로 변경
 import { PRIMARY_COLOR } from "../../../../../contexts/global";
+import { useState } from "react";
+import LoginModal from "@/modals/LoginModal";
 
 export default function Header() {
   const router = useRouter();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  const onClickUserIcon = () => {
+    // TODO: 로그인 여부 체크
+    setShowLoginModal(true);
+  };
 
   return (
     <Wrapper>
@@ -24,8 +32,11 @@ export default function Header() {
           size="large"
           shape="circle"
           icon={<UserOutlined style={{ fontSize: "22px" }} />}
+          onClick={onClickUserIcon}
         />
       </Container>
+
+      <LoginModal open={showLoginModal} />
     </Wrapper>
   );
 }
