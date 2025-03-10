@@ -1,42 +1,49 @@
-import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "~/utils/supabase/server";
+"use server";
+
+import { NextApiRequest, NextApiResponse } from "next";
 
 export const config = {
-  runtime: "edge", // ✅ Edge 런타임 설정
+  runtime: "nodejs", // ✅ Node.js 런타임 사용
 };
 
-export default async function GET(request: NextRequest, res: NextResponse) {
-  console.log("heidi test 0-1");
+export default async function handler(
+  request: NextApiRequest,
+  res: NextApiResponse
+) {
   const { searchParams, origin } = new URL(
-    request.url,
+    request.url || "",
     process.env.NEXTAUTH_URL
   );
-  console.log("heidi test 0-2");
+
   const code = searchParams.get("code");
-  // if "next" is in param, use it as the redirect URL
+  if (!code) {
+    console.error("❌ Auth code is missing!");
+    return res.redirect(`${origin}/auth/auth-code-error`);
+  }
+
   const next = searchParams.get("next") ?? "/";
 
   if (code) {
-    console.log("heidi test 1");
-    const supabase = await createClient(request, res);
-    console.log("heidi test 2", code);
+    const { createClient } = await import("~/utils/supabase/server");
+    const cookieHeader = request.headers.cookie || "";
+
+    const supabase = await createClient(cookieHeader);
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
-    console.log("heidi test 3", data);
-    console.log("heidi test 3", error);
+    console.log("heidi test data : ", data);
     if (!error) {
-      const forwardedHost = request.headers.get("x-forwarded-host"); // original origin before load balancer
+      const forwardedHost = request.headers["x-forwarded-host"]; // original origin before load balancer
       const isLocalEnv = process.env.NODE_ENV === "development";
       if (isLocalEnv) {
         // we can be sure that there is no load balancer in between, so no need to watch for X-Forwarded-Host
-        return NextResponse.redirect(`${origin}${next}`);
+        return res.redirect(`${origin}${next}`);
       } else if (forwardedHost) {
-        return NextResponse.redirect(`https://${forwardedHost}${next}`);
+        return res.redirect(`https://${forwardedHost}${next}`);
       } else {
-        return NextResponse.redirect(`${origin}${next}`);
+        return res.redirect(`${origin}${next}`);
       }
     }
   }
 
   // return the user to an error page with instructions
-  return NextResponse.redirect(`${origin}/auth/auth-code-error`);
+  return res.redirect(`${origin}/auth/auth-code-error`);
 }
