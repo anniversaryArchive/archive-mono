@@ -1,3 +1,5 @@
-export default function Map() {
-  return <>지도</>;
+import Map from "@/components/map";
+
+export default function Index() {
+  return <Map />;
 }
